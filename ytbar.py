@@ -14,7 +14,8 @@ from luma.core.virtual import viewport
 from luma.core.legacy import text, show_message
 from luma.core.legacy.font import proportional, CP437_FONT, TINY_FONT, SINCLAIR_FONT, LCD_FONT
 
-
+serial = spi(port=0, device=0, gpio=noop())
+device = max7219(serial, cascaded=4 , block_orientation=-90, rotate=2)
 while(True):
     channelinfo = requests.get("https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UC78ZVrFPY37EdjyqG6Aj4fQ&key=AIzaSyB7aSNfwx7Z5UQswqLma3ZZoNeawVidsg8")
     subCount = channelinfo.json()['items'][0]['statistics']['subscriberCount']
@@ -37,8 +38,7 @@ while(True):
     # #Remove 'list' in Python2.7
 
 
-    # serial = spi(port=0, device=0, gpio=noop())
-    # device = max7219(serial, cascaded=4 , block_orientation=-90, rotate=2)
+ 
 
     # for i in range(len(disp)):
     #     show_message(device, disp[i], fill="white", font=proportional(LCD_FONT),scroll_delay = 0.02) #Change the value of 'scroll_delay' to change the Scrolling Speed
