@@ -17,9 +17,9 @@ from luma.core.legacy.font import proportional, CP437_FONT, TINY_FONT, SINCLAIR_
 serial = spi(port=0, device=0, gpio=noop())
 device = max7219(serial, cascaded=4 , block_orientation=-90, rotate=2)
 while(True):
-    channelinfo = requests.get("https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UC78ZVrFPY37EdjyqG6Aj4fQ&key=AIzaSyB7aSNfwx7Z5UQswqLma3ZZoNeawVidsg8")
-    subCount = channelinfo.json()['items'][0]['statistics']['subscriberCount']
-    show_message(device, subCount, fill="white", font=proportional(LCD_FONT),scroll_delay = 0.02)
+    channelinfo = requests.get("https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UC78ZVrFPY37EdjyqG6Aj4fQ&key=")
+    subCount = channelinfo.json()['items'][0]['statistics']['subscriberCount'] + " subscribers"
+    show_message(device, subCount, fill="white", font=proportional(LCD_FONT),scroll_delay = 0.5)
     time.sleep(300)
 
 
